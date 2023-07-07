@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "station-fitnes-gym": {
+      "hosting": {
+        "app": [
+          "station-fitnes-gym"
+        ]
+      }
+    }
+  }
+}

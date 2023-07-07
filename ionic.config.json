@@ -1,0 +1,7 @@
+{
+  "name": "station-gym",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

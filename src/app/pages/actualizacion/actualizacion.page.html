@@ -1,0 +1,442 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+            <ion-back-button color="danger" defaultHref="/tabs/tab2"></ion-back-button>
+        </ion-buttons>
+        <ion-title>actualizacion De Usuario</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content color="dark" padding>
+
+
+    <form autocomplete="off" [formGroup]="forma" (ngSubmit)="GuardarUsuario()" *ngIf="registro">
+        <ion-list color="dark">
+            <ion-item color="dark" style="display:none">
+                <ion-label position="floating">ID:</ion-label>
+                <ion-input type="text" formControlName="id" readonly [(ngModel)]="registroID"></ion-input>
+            </ion-item>
+            <ion-item color="dark">
+                <ion-label>Estado Del Cliente </ion-label>
+                <ion-select color="danger" formControlName="estado" [class.is-invalid]="validacionEstado" [(ngModel)]="registro.estado" placeholder="Seleccionar">
+                    <ion-select-option>activo</ion-select-option>
+                    <ion-select-option>desactivo</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item color="dark">
+                <ion-label position="floating">FECHA DE CREACION:</ion-label>
+                <ion-input type="text" formControlName="fecha" [class.is-invalid]="validacionFecha" readonly [(ngModel)]="registro.fecha"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionFecha" color="danger">
+                <div>Campo Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">NOMBRES Y APELLIDOS:</ion-label>
+                <ion-input type="text" formControlName="nombre" [class.is-invalid]="validacionNombre" [ngModel]="registro.nombre"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionFecha" color="danger">
+                <div>Campo Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">CEDULA DE CIUDADANIA:</ion-label>
+                <ion-input type="number" formControlName="cedula" [class.is-invalid]="validacionCedula" [ngModel]="registro.cedula"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionFecha" color="danger">
+                <div>Campo Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="floating"> RH:</ion-label>
+                        <ion-input type="text" placeholder="RH" formControlName="rh" [class.is-invalid]="validacionRh" [ngModel]="registro.rh"></ion-input>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label position="floating"> EDAD:</ion-label>
+                        <ion-input type="text" placeholder="EDAD" formControlName="edad" [class.is-invalid]="validacionEdad" [ngModel]="registro.edad"></ion-input>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label position="floating"> SEXO:</ion-label>
+                        <ion-input type="text" placeholder="SEXO" formControlName="sexo" [class.is-invalid]="validacionSexo" [ngModel]="registro.sexo"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item *ngIf="validacionRh" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+            <ion-item *ngIf="validacionEdad" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+            <ion-item *ngIf="validacionSexo" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">FECHA DE NACIMIENTOS:</ion-label>
+                <ion-input type="date" formControlName="fechaNacimiento" [class.is-invalid]="validacionFechaNacimiento" [ngModel]="registro.fechaNacimiento"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionFechaNacimiento" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+            <ion-item color="dark">
+                <ion-label position="floating">CELULAR:</ion-label>
+                <ion-input type="text" formControlName="celular" [class.is-invalid]="validacionCelular" [ngModel]="registro.celular"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionCelular" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">EMAIL:</ion-label>
+                <ion-input type="email" formControlName="email" [class.is-invalid]="validacionEmail" [ngModel]="registro.email"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionEmail" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">REALIZA ACTIVIDAD FISICA(SI O NO):</ion-label>
+                <ion-input type="text" formControlName="actividadFisica" [class.is-invalid]="validacionActividadFisica" [ngModel]="registro.actividadFisica"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionActividadFisica" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">DEPORTE QUE PRACTICA:</ion-label>
+                <ion-input type="text" formControlName="deportePractica" [class.is-invalid]="validacionDeportePractica" [ngModel]="registro.deportePractica"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionDeportePractica" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="danger">
+                <ion-label align="center">SIGNOS VITALES Y MEDIDAS ANTROPOMETRICAS</ion-label>
+            </ion-item>
+
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">FRECUENCIA ARTERIAL:</ion-label>
+                <ion-input type="text" formControlName="frecuenciaArterial" [class.is-invalid]="validacioFrecuenciaArterial" [ngModel]="registro.frecuenciaArterial"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacioFrecuenciaArterial" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">FRECUENCIA CARDIACA:</ion-label>
+                <ion-input type="text" formControlName="frecuenciaCardiaca" [class.is-invalid]="validacionFrecuenciaCardiaca" [ngModel]="registro.frecuenciaArterial"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionFrecuenciaCardiaca" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">ESTATURA:</ion-label>
+                <ion-input type="text" formControlName="estatura" [class.is-invalid]="validacionEstatura" [ngModel]="registro.estatura"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionEstatura" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">PESO:</ion-label>
+                <ion-input type="text" formControlName="peso" [class.is-invalid]="validacionPeso" [ngModel]="registro.peso"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionPeso" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">INDICE DE MASA CORPORAL:</ion-label>
+                <ion-input type="text" formControlName="masaCorporal" [class.is-invalid]="validacionMasaCorporal" [ngModel]="registro.masaCorporal"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionMasaCorporal" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">INDICE DE GRASA CORPORAL:</ion-label>
+                <ion-input type="text" formControlName="grasaCorporal" [class.is-invalid]="validacionGrasaCorporal" [ngModel]="registro.grasaCorporal"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionGrasaCorporal" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="danger">
+                <ion-label align="center">TEST</ion-label>
+            </ion-item>
+
+            <ion-item color="dark">
+                <h6>¿Alguna vez su médico le ha dicho que tiene algún problema en el corazón, y solo debe realizar actividad fisica bajo recomendaciones médicas?</h6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-input type="text" placeholder="Respuesta" formControlName="recomendacionUno" [class.is-invalid]="validacionUno" [ngModel]="registro.recomendacionUno"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionUno" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <h6>¿Usted presenta dolor o molestia en el pecho, estando en reposo?</h6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-input type="text" placeholder="Respuesta" formControlName="recomendacionDos" [class.is-invalid]="validacionDos" [ngModel]="registro.recomendacionDos"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionDos" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <h6>¿En el ultimo mes,ha tenido dolor en el pecho estando en reposo?</h6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-input type="text" placeholder="Respuesta" formControlName="recomendacionTres" [class.is-invalid]="validacionTres" [ngModel]="registro.recomendacionTres"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionTres" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <h6>¿Pierde balance o sufre de mareo, vértigo o alguna perdida del conocimiento?</h6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-input type="text" placeholder="Respuesta" formControlName="recomendacionCuatro" [class.is-invalid]="validacionCuatro" [ngModel]="registro.recomendacionCuatro"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionCuatro" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <h6>¿Tiene algún problema en los huesos o las arteculaciones, que pueda empeorar con la actividad física?</h6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-input type="text" placeholder="Respuesta" formControlName="recomendacionCinco" [class.is-invalid]="validacionCinco" [ngModel]="registro.recomendacionCinco"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionCinco" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <h6>¿Su médico le ha formulado medicamentos para la presión arterial o el corazón?</h6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-input type="text" placeholder="Respuesta" formControlName="recomendacionSeis" [class.is-invalid]="validacionSeis" [ngModel]="registro.recomendacionSeis"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionSeis" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <h6>¿Conoce alguna otra razón por la cual usted no debe realizar alguna actividad física?</h6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-input type="text" placeholder="Respuesta" formControlName="recomendacionSiete" [class.is-invalid]="validacionSiete" [ngModel]="registro.recomendacionSiete"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionSiete" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+
+            <ion-item color="danger">
+                <ion-label align="center">CONTROL DE MEDIDAS</ion-label>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">PECHO:</ion-label>
+                <ion-input type="text" formControlName="pecho" [class.is-invalid]="validacionPecho" [ngModel]="registro.pecho"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionPecho" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <H6 position="floating">BRAZO:</H6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="floating"> DERECHA:</ion-label>
+                        <ion-input type="text" formControlName="brazoDerecho" [class.is-invalid]="validacionBrazoDerecho" [ngModel]="registro.brazoDerecho"></ion-input>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label position="floating"> IZQUIERDA:</ion-label>
+                        <ion-input type="text" formControlName="brazoIzquierdo" [class.is-invalid]="validacionBrazoIzquierdo" [ngModel]="registro.brazoIzquierdo"></ion-input>
+                    </ion-col>
+                </ion-row>
+
+
+
+            </ion-item>
+            <ion-item *ngIf="validacionBrazoDerecho" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+            <ion-item *ngIf="validacionBrazoIzquierdo" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <H6 position="floating">ANTEBRAZO:</H6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="floating"> DERECHA:</ion-label>
+                        <ion-input type="text" formControlName="antebrazoDerecho" [class.is-invalid]="validacionAntebrazoDerecho" [ngModel]="registro.antebrazoDerecho"></ion-input>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label position="floating"> IZQUIERDA:</ion-label>
+                        <ion-input type="text" formControlName="antebrazoIzquierdo" [class.is-invalid]="validacionAntebrazoizquierdo" [ngModel]="registro.antebrazoIzquierdo"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item *ngIf="validacionAntebrazoDerecho" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+            <ion-item *ngIf="validacionAntebrazoizquierdo" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">ABDOMEN SUPERIOR:</ion-label>
+                <ion-input type="text" formControlName="abdomenSuperior" [class.is-invalid]="validacionAbdomenSuperior" [ngModel]="registro.abdomenSuperior"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionAbdomenSuperior" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">ABDOMEN MEDIO:</ion-label>
+                <ion-input type="text" formControlName="abdomenMedio" [class.is-invalid]="validacionAbdomenMedio" [ngModel]="registro.abdomenMedio"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionAbdomenMedio" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">CINTURA:</ion-label>
+                <ion-input type="text" formControlName="cintura" [class.is-invalid]="validacionCintura" [ngModel]="registro.cintura"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionCintura" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-label position="floating">CADERA:</ion-label>
+                <ion-input type="text" formControlName="cadera" [class.is-invalid]="validacionCadera" [ngModel]="registro.cadera"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="validacionCadera" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <H6 position="floating">PIERNA:</H6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="floating"> DERECHA:</ion-label>
+                        <ion-input type="text" formControlName="piernaDerecha" [class.is-invalid]="validacionPiernaDerecha" [ngModel]="registro.piernaDerecha"></ion-input>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label position="floating"> IZQUIERDA:</ion-label>
+                        <ion-input type="text" formControlName="piernaIzquierda" [class.is-invalid]="validacionPiernaIzquierda" [ngModel]="registro.piernaIzquierda"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item *ngIf="validacionPiernaDerecha" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+            <ion-item *ngIf="validacionPiernaIzquierda" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <H6 position="floating">PANTORRILLA:</H6>
+            </ion-item>
+
+
+            <ion-item color="dark">
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="floating"> DERECHA:</ion-label>
+                        <ion-input type="text" formControlName="pantorrillaDerecha" [class.is-invalid]="validacionPantorrillaDerecha" [ngModel]="registro.pantorrillaDerecha"></ion-input>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label position="floating"> IZQUIERDA:</ion-label>
+                        <ion-input type="text" formControlName="pantorrillaIzquierda" [class.is-invalid]="validacionPantorrillaIzquierda" [ngModel]="registro.pantorrillaIzquierda"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item *ngIf="validacionPantorrillaDerecha" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+            <ion-item *ngIf="validacionPantorrillaIzquierda" color="danger">
+                <div>Campos Obligatorio</div>
+            </ion-item>
+
+
+        </ion-list>
+
+        <ion-button expand="full" type="submit">Guardar Usuario</ion-button>
+    </form>
+
+</ion-content>

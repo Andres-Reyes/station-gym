@@ -1,0 +1,51 @@
+<ion-header color="dark">
+    <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+            <ion-back-button color="danger" defaultHref="/tabs/tab4"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Registro Del Pago</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="dark">
+
+    <ion-row>
+        <ion-col>
+            <form autocomplete="off" [formGroup]="forma" (ngSubmit)="GuardarUsuario()" *ngIf="registro">
+                <ion-list>
+                    <ion-item color="danger">
+                        <ion-label position="floating">ID</ion-label>
+                        <ion-input type="text" readonly formControlName="idU" [(ngModel)]="registroID"></ion-input>
+                    </ion-item>
+                    <ion-item color="danger">
+                        <ion-label position="floating">CEDULA DEL CLIENTE</ion-label>
+                        <ion-input type="text" readonly formControlName="cedula" [class.is-invalid]="validacionCedula" [(ngModel)]="registro.cedula"></ion-input>
+                    </ion-item>
+                    <ion-item color="danger">
+                        <ion-label position="floating">NOMBRE DEL CLIENTE</ion-label>
+                        <ion-input type="text" readonly formControlName="nombre" [class.is-invalid]="validacionNombre" [(ngModel)]="registro.nombre"></ion-input>
+                    </ion-item>
+                    <ion-item color="danger">
+                        <ion-label position="floating">FECHA DE PAGO:</ion-label>
+                        <ion-input type="date" required formControlName="fechaPago" readonly [class.is-invalid]="validacionFecha" [(ngModel)]="fecha"></ion-input>
+                    </ion-item>
+                    <ion-item color="danger">
+                        <ion-label>Dias </ion-label>
+                        <ion-select color="danger" placeholder="seleccionar" formControlName="dias" [class.is-invalid]="validacionDias">
+                            <ion-select-option>05 </ion-select-option>
+                            <ion-select-option>10 </ion-select-option>
+                            <ion-select-option>15 </ion-select-option>
+                            <ion-select-option>20 </ion-select-option>
+                            <ion-select-option>25 </ion-select-option>
+                            <ion-select-option>30 </ion-select-option>
+                            <ion-select-option>31 </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+                <ion-button expand="full" type="submit">Guardar Usuario</ion-button>
+            </form>
+        </ion-col>
+    </ion-row>
+
+
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title>Recuperacion de Contraseña</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+    <form color="dark">
+
+        <ion-item lines="full" color="dark">
+            <ion-label position="floating">Correo Electronico</ion-label>
+            <ion-input type="email" #email required></ion-input>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <ion-button type="submit" color="danger" (click)="onResetPassword(email)" expand="block">Enviar Correo De Recuperación</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

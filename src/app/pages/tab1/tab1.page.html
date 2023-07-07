@@ -1,0 +1,33 @@
+<ion-header [translucent]="true" class="ion-no-border">
+    <ion-toolbar color="dark">
+        <ion-row>
+            <ion-title>
+                REGISTRO
+            </ion-title>
+            <ion-button type="submit" horizontal="end" color="danger" (click)="cerrarSesion()">
+                <ion-icon icon="log-out"></ion-icon>
+            </ion-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="dark">
+
+    <ion-row>
+        <ion-col>
+            <ion-list color="danger">
+                <ion-item-sliding color="danger" *ngFor="let registro of registros">
+                    <ion-item detail button [routerLink]="['/tabs/tab1/usuario-recomendado', registro.id]" color="danger">
+                        <ion-label>{{registro.nombre}}</ion-label>
+                    </ion-item>
+                </ion-item-sliding>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="danger" (click)="AgresarUsuarioPrincipal()">
+            <ion-icon icon="add"> </ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

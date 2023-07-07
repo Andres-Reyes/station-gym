@@ -1,0 +1,29 @@
+<ion-header [translucent]="true" class="ion-no-border">
+    <ion-toolbar color="dark">
+        <ion-row>
+            <ion-title>
+                NOTIFICACIONES
+            </ion-title>
+            <ion-button type="submit" horizontal="end" color="danger" (click)="cerrarSesion()">
+                <ion-icon icon="log-out"></ion-icon>
+            </ion-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="dark">
+    <ion-row>
+        <ion-col>
+            <ion-list color="danger">
+                <ion-item-sliding color="danger" *ngFor="let pagos of pagosUsuario">
+                    <ion-item color="danger" lines="inset" detail button [routerLink]="['/tabs/tab3/actualizaciones', pagos.id]">
+                        <ion-label>{{pagos.nombre}}</ion-label>
+                        <ion-icon name="remove"></ion-icon>
+                        <p horizontal="end">{{pagos.vencimiento- 1}}</p>
+                    </ion-item>
+                </ion-item-sliding>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+
+</ion-content>
